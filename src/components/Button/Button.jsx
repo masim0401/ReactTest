@@ -1,7 +1,10 @@
-function Button() {
+import styles from './Button.module.scss';
+import cn from 'classnames';
+
+function Button({ children, onClick, type }) {
     return (
-        <button>
-            Button text
+        <button type={type} onClick={onClick} className={cn(styles['button'], styles['text-color'])}>
+            {children}
         </button>
     );
 }
