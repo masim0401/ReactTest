@@ -2,13 +2,19 @@ import Button from '../../../components/Button/Button.jsx';
 import Input from '../../../components/Input/Input.jsx';
 import styles from './LoginForm.module.scss';
 import {Formik} from 'formik';
+import {useDispatch} from 'react-redux';
+import {login} from '../../../store/authSlice.js';
+import {useNavigate} from 'react-router-dom';
 
 function LoginForm() {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
     const onSubmit = (values) => {
-        console.log(values);
-        if (values.username !== 'admin') {
-            alert('Access denied');
-            return;
+        if (values.username !== 'admin' || values.password !== 'qwerty!') {
+            alert('Invalid username or password');
+        } else {
+            dispatch(login());
+            navigate('/users');
         }
     };
 
@@ -51,10 +57,8 @@ function LoginForm() {
                 handleSubmit
               }) => (
                 <form className={styles['form']} onSubmit={handleSubmit}>
-                    {JSON.stringify(errors)}
-                    {JSON.stringify(touched)}
-                    <Input name="username" onChange={handleChange} onBlur={handleBlur} value={values.username} type="text" placeholder="Username"/>
-                    <Input name="password" onChange={handleChange} onBlur={handleBlur} value={values.password} type="password" placeholder="Password"/>
+                    <Input name="username" error={errors.username} onChange={handleChange} onBlur={handleBlur} value={values.username} type="text" placeholder="Username"/>
+                    <Input name="password" error={errors.password} onChange={handleChange} onBlur={handleBlur} value={values.password} type="password" placeholder="Password"/>
 
                     <Button type="submit" onClick={handleSubmit} label="text">
                         Login

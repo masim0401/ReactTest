@@ -6,18 +6,25 @@ function Input({
                    type,
                    value,
                    onChange,
-                   onBlur
-
+                   onBlur,
+                   error
+// передать объект ошибки (текст ошибки)
                }) {
     return (
-        <input onChange={onChange}
-               onBlur={onBlur}
-               value={value}
-               className={styles['input']}
-               name={name}
-               placeholder={placeholder}
-               type={type}
-        />
+        <div>
+            <input onChange={onChange}
+                   onBlur={onBlur}
+                   value={value}
+                   className={styles['input']}
+                   name={name}
+                   placeholder={placeholder}
+                   type={type}
+            />
+            <div className={styles['error']}>
+                {error && error}
+            </div>
+        {/*  // вывести текст ошибки, по-умолчанию не показывать  */}
+        </div>
     );
 }
 
