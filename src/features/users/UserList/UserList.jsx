@@ -1,6 +1,6 @@
 import styles from './UserList.module.scss';
 import {useEffect} from 'react';
-import Button from '../../../components/Button/Button.jsx';
+import {Link} from 'react-router-dom';
 
 function UserList({data}) {
     useEffect(() => {
@@ -25,7 +25,7 @@ function UserList({data}) {
                         <td>{user.name}</td>
                         <td>{user.lastName}</td>
                         <td>{user.createdAt}</td>
-                        <td><Button>Edit</Button></td>
+                        <td><Link to={`/users/edit/${user.id}`}>Edit</Link></td>
                     </tr>
                 );
             })}

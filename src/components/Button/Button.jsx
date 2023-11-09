@@ -1,9 +1,9 @@
 import styles from './Button.module.scss';
 import cn from 'classnames';
 
-function Button({ children, onClick, type }) {
+function Button({ children, onClick, type, className  }) {
     return (
-        <button type={type} onClick={onClick} className={cn(styles['button'], styles['text-color'])}>
+        <button type={type} onClick={onClick} className={cn(styles['button'], styles['text-color'], className)}>
             {children}
         </button>
     );

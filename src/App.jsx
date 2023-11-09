@@ -4,6 +4,7 @@ import Home from './pages/Home.jsx';
 import Login from './pages/Login.jsx';
 import Users from './pages/Users.jsx';
 import Layout from './layouts/Layout.jsx';
+import UserEdit from './pages/UserEdit.jsx';
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
           <Route path="/" element={<PrivateRoutes/>}>
               <Route index element={<Home/>}/>
               <Route path="/users" element={<Users/>}/>
+              <Route path="/users/edit/:id" element={<UserEdit/>}/>
           </Route>
       </Routes>
     </>

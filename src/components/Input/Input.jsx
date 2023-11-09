@@ -1,4 +1,5 @@
 import styles from './Input.module.scss';
+import cn from 'classnames';
 
 function Input({
                    name,
@@ -7,7 +8,8 @@ function Input({
                    value,
                    onChange,
                    onBlur,
-                   error
+                   error,
+                   className
 // передать объект ошибки (текст ошибки)
                }) {
     return (
@@ -15,7 +17,7 @@ function Input({
             <input onChange={onChange}
                    onBlur={onBlur}
                    value={value}
-                   className={styles['input']}
+                   className={cn(styles['input'],className, (error ? styles['inputError'] : null))}
                    name={name}
                    placeholder={placeholder}
                    type={type}
@@ -27,5 +29,5 @@ function Input({
         </div>
     );
 }
-
+/*cn(styles['userEditInput'])*/
 export default Input;
